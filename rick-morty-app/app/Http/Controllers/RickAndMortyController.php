@@ -15,7 +15,7 @@ class RickAndMortyController extends Controller
             $response = Http::get("{$this->baseUrl}/character");
 
             if ($response->successful()) {
-                $data = json_decode($response->body()); 
+                $data = json_decode($response->body(), true);
 
                 return view('rickAndMorty.index', ['data' => $data]);
             }

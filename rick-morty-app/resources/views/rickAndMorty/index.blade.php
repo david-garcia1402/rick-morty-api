@@ -24,19 +24,19 @@
             </div>
         </nav>
             <div class="row gx-4 gy-4 justify-content-center">
-                @php
+            @php
                 $personagens = is_array($data['results']) ? $data['results'] : [$data['results']];
             @endphp
             
             @foreach ($personagens as $infoPersonagem)
                 <div class="col-md-4 d-flex justify-content-center">
                     <div class="card h-100 rounded border-dark" style="max-width: 300px; margin-top: 1.5rem">
-                        <img src="{{ $infoPersonagem->image }}" class="card-img-top" alt="{{ $infoPersonagem->name }}">
-                        <div class="card-body" id="{{ $infoPersonagem->id }}">
+                        <img src="{{ $infoPersonagem['image'] }}" class="card-img-top" alt="{{ $infoPersonagem['name'] }}">
+                        <div class="card-body" id="{{ $infoPersonagem['id'] }}">
                             <ul class="list-group list-group-flush">
-                                <li class="list-group-item"><strong>Nome: </strong>{{ $infoPersonagem->name }}</li>
-                                <li class="list-group-item"><strong>Status: </strong>{{ $infoPersonagem->status }}</li>
-                                <li class="list-group-item"><strong>Espécie: </strong>{{ $infoPersonagem->species }}</li>
+                                <li class="list-group-item"><strong>Nome: </strong>{{ $infoPersonagem['name'] }}</li>
+                                <li class="list-group-item"><strong>Status: </strong>{{ $infoPersonagem['status'] }}</li>
+                                <li class="list-group-item"><strong>Espécie: </strong>{{ $infoPersonagem['species'] }}</li>
                             </ul>
                         </div>
                     </div>
