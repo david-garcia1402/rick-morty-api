@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 
@@ -27,16 +28,15 @@ class RickAndMortyController extends Controller
         }
     }
 
-    public function search($id)
+    public function search(Request $request)
     {
         try {
-            $response = Http::get("{$this->baseUrl}/character/" . $id);
+            $search = trim($request->search, ' ');
+            $response = Http::get("{$this->baseUrl}/character/?name=" . $search);
             if ($response->successful()) {
-                $data = json_decode($response->body()); 
-                $character = [
-                    'results' => $data
-                ];
-                return view('rickAndMorty.index', ['data' => $character]);
+                $data = json_decode($response->body(), true); 
+
+                return view('rickAndMorty.index', ['data' => $data]);
             }
         } catch (\Exception $e) {
             Log::error('Erro ao buscar personagens: ' . $e->getMessage());

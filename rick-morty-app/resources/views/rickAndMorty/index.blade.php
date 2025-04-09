@@ -13,8 +13,15 @@
         <nav class="navbar navbar-expand-lg rounded" style="background-color: #97ce4c; border-radious">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#"><h3 style="color:white">Bem vindo ao site de personagens do Rick e Morty</h3></a>
-                <form class="d-flex" role="search">
-                  <input class="form-control me-2" type="search" placeholder="Pesquise um personagem..." aria-label="Search">
+                <form class="d-flex" role="search" method="GET" action="{{ route('search') }}">
+                    <input 
+                        class="form-control me-2" 
+                        type="search" 
+                        name="search" 
+                        placeholder="Pesquise um personagem..." 
+                        aria-label="Search"
+                        value="{{ request('search') }}" {{-- mantém o valor após busca --}}
+                    >
                     <button class="btn btn-success" type="submit">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
                             <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
